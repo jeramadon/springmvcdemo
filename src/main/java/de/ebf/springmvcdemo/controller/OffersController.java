@@ -8,6 +8,7 @@ package de.ebf.springmvcdemo.controller;
 
 import de.ebf.springmvcdemo.dao.Offer;
 import de.ebf.springmvcdemo.service.OffersService;
+import de.ebf.springmvcdemo.utilities.Utilities;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -35,6 +38,12 @@ public class OffersController {
     
     @RequestMapping("/createoffer")
     public String createOffer() {
+        return "createoffer";
+    }
+    
+    @RequestMapping(value = "/test", method=RequestMethod.GET)
+    public String showTest(Model model, @RequestParam("id")String id) {
+        Utilities.writeToConsole("id=" + id);
         return "createoffer";
     }
     
