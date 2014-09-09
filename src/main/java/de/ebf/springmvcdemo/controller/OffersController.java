@@ -9,7 +9,6 @@ package de.ebf.springmvcdemo.controller;
 import de.ebf.springmvcdemo.dao.Offer;
 import de.ebf.springmvcdemo.service.OffersService;
 import de.ebf.springmvcdemo.utilities.Utilities;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +27,7 @@ public class OffersController {
     
     @RequestMapping("/offers")
     public String showOffers(Model model) {
-        List<Offer> offers = offersService.getCurrentOffers();
-        model.addAttribute("offers", offers);
+        model.addAttribute("offers", offersService.getCurrentOffers());
         return "offers";
     }
     
@@ -44,8 +42,9 @@ public class OffersController {
         return "createoffer";
     }
     
-    @RequestMapping("/docreate")
-    public String doCreate() {
+    @RequestMapping(value = "/docreate", method=RequestMethod.POST)
+    public String doCreate(Model model, Offer offer) {
+        Utilities.writeToConsole(offer.toString());
         return "offercreated";
     }
     

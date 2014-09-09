@@ -12,3 +12,4 @@ nb-configuration.xml
 *.war
 *.ear
 *.dpf
+.netbeans_automatic_build

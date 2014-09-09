@@ -9,15 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Create Offer</title>
     </head>
     <body>
         <h1>New Offer</h1>
-            <form method="get" action="${pageContext.request.contextPath}/docreate">
+            <form method="post" action="${pageContext.request.contextPath}/docreate">
                 <table>
                     <tr><td>Name:</td><td><input name="name" type="text" /></td></tr>                        
                     <tr><td>Email:</td><td><input name="email" type="text" /></td></tr>    
-                    <tr><td>Text:</td><td><textarea rows="10" cols="10"></textarea></td></tr>
+                    <tr><td>Text:</td><td><textarea name="text" rows="10" cols="10"></textarea></td></tr>
                     <tr><td></td><td><input value="Create Offer" type="submit" /></td></tr>
                 </table>
             </form>
