@@ -6,6 +6,7 @@
 
 package de.ebf.springmvcdemo.dao;
 
+import de.ebf.springmvcdemo.utilities.Utilities;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,8 +29,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class OffersDAO {
     
     private NamedParameterJdbcTemplate jdbcTemplate;
+    
+    public OffersDAO () {
+        Utilities.writeToConsole("Created OffersDAO");
+    }
 
-    @Autowired
+//    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
