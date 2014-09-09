@@ -6,8 +6,12 @@
 
 package de.ebf.springmvcdemo.controller;
 
+import de.ebf.springmvcdemo.dao.Offer;
+import de.ebf.springmvcdemo.service.OffersService;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,19 +23,18 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class OffersController {
-  /*    
-    @RequestMapping("/")
-    public ModelAndView showHome(HttpSession session) {
-        session.setAttribute("name", "sam");
-        ModelAndView modelAndView = new ModelAndView("home");
-        Map<String, Object> modelMap = modelAndView.getModel();
-        modelMap.put("name", "frodo");
-        return modelAndView;
-    }
-//  */    
+
+    private OffersService offersService;
+    
     @RequestMapping("/")
     public String showHome(Model model) {
-        model.addAttribute("name", "<b>bilbo</b>");
+        List<Offer> offers = offersService.getCurrentOffers();
+        model.addAttribute("offers", offers);
         return "home";
     }
+    
+    @Autowired
+    public void setOffersService(OffersService offersService) {
+        this.offersService = offersService;
+    }    
 }

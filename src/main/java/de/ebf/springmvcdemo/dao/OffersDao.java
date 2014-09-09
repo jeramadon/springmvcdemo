@@ -24,8 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author jerryamadon
  */
-@Component("offersDAO")
-public class OffersDAO {
+@Component("offersDao")
+public class OffersDao {
     
     private NamedParameterJdbcTemplate jdbcTemplate;
     

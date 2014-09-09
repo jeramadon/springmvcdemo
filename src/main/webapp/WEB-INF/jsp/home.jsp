@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Spring MVC Demo</title>
     </head>
     <body>
         <h1>Yo</h1>
@@ -20,13 +20,24 @@
             select id, name, email, text from offers
         </sql:query>
             
-        Query Results <p />
+        <h1>Query Results Manual</h1>
+        <p />
         <c:forEach var="row" items="${results.rows}">
             Id: ${row.id}<br/>
             Name: ${row.name}<br/>
             Email: ${row.email}<br/>
             Text: ${row.text}<br/>
             <br/>
+        </c:forEach>
+            
+        <h1>Query Results Dao</h1>
+        <p />
+        <c:forEach var="offer" items="${offers}">
+            Id: ${offer.id}<br/>
+            Name: ${offer.name}<br/>
+            Email: ${offer.email}<br/>
+            Text: ${offer.text}<br/>
+            <br/>            
         </c:forEach>
             
     </body>
