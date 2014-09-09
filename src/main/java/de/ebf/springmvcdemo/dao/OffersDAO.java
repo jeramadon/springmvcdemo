@@ -6,7 +6,6 @@
 
 package de.ebf.springmvcdemo.dao;
 
-import de.ebf.springmvcdemo.utilities.Utilities;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
