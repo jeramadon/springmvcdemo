@@ -30,11 +30,7 @@ public class OffersDAO {
     
     private NamedParameterJdbcTemplate jdbcTemplate;
     
-    public OffersDAO () {
-        Utilities.writeToConsole("Created OffersDAO");
-    }
-
-//    @Autowired
+    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
