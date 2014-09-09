@@ -10,35 +10,7 @@
         <title>Spring MVC Demo</title>
     </head>
     <body>
-        <h1>Yo</h1>
-        <%= "Session name: " + session.getAttribute("name")%> <p />
-        <%= "Request name: " + request.getAttribute("name")%> <p />
-        Request name(2): ${name} <p />
-        Request name(3): <c:out value="${name}" /> <p />
-
-        <sql:query var="results" dataSource="jdbc/springmvcdemo">
-            select id, name, email, text from offers
-        </sql:query>
-            
-        <h1>Query Results Manual</h1>
-        <p />
-        <c:forEach var="row" items="${results.rows}">
-            Id: ${row.id}<br/>
-            Name: ${row.name}<br/>
-            Email: ${row.email}<br/>
-            Text: ${row.text}<br/>
-            <br/>
-        </c:forEach>
-            
-        <h1>Query Results Dao</h1>
-        <p />
-        <c:forEach var="offer" items="${offers}">
-            Id: ${offer.id}<br/>
-            Name: ${offer.name}<br/>
-            Email: ${offer.email}<br/>
-            Text: ${offer.text}<br/>
-            <br/>            
-        </c:forEach>
-            
+        <p><a href="${pageContext.request.contextPath}/offers" >Current Offers</a></p>
+        <p><a href="${pageContext.request.contextPath}/createoffer" >Create Offer</a></p>
     </body>
 </html>

@@ -26,11 +26,16 @@ public class OffersController {
 
     private OffersService offersService;
     
-    @RequestMapping("/")
-    public String showHome(Model model) {
+    @RequestMapping("/offers")
+    public String showOffers(Model model) {
         List<Offer> offers = offersService.getCurrentOffers();
         model.addAttribute("offers", offers);
-        return "home";
+        return "offers";
+    }
+    
+    @RequestMapping("/createoffer")
+    public String createOffer() {
+        return "createoffer";
     }
     
     @Autowired
