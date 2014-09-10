@@ -2,7 +2,7 @@ nbproject/private/
 build/
 nbbuild/
 dist/
-nbdisxt/
+nbdist/
 target/springmvcdemo-1.0-SNAPSHOT/
 nbactions.xml
 nb-configuration.xml
