@@ -6,6 +6,7 @@
 
 package de.ebf.springmvcdemo.dao;
 
+import javax.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class Offer {
 
     private int id;
+    @Size(min=5, max=100)
     private String name;
     private String email;
     private String text;
