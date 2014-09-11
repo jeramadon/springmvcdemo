@@ -6,8 +6,9 @@
 
 package de.ebf.springmvcdemo.dao;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.springframework.stereotype.Component;
 
 /**
  *
@@ -16,9 +17,12 @@ import org.springframework.stereotype.Component;
 public class Offer {
 
     private int id;
-    @Size(min=5, max=100)
+    @Size(min=1, max=100, message="Enter a valid name")
     private String name;
+    @NotNull
+    @Pattern(regexp=".*@.*\\..*", message="Enter a valid email address")
     private String email;
+    @Size(min=1, max=100, message="Enter a valid text description")
     private String text;
 
     public Offer() {        
