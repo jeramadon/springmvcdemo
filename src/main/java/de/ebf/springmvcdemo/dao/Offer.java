@@ -6,6 +6,7 @@
 
 package de.ebf.springmvcdemo.dao;
 
+import de.ebf.springmvcdemo.validation.ValidEmail;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -20,7 +21,8 @@ public class Offer {
     @Size(min=1, max=100, message="Enter a valid name")
     private String name;
     @NotNull
-    @Pattern(regexp=".*@.*\\..*", message="Enter a valid email address")
+//    @Pattern(regexp=".*@.*\\..*", message="Enter a valid email address")
+    @ValidEmail(min=5, message="Enter a valid Email address")
     private String email;
     @Size(min=1, max=100, message="Enter a valid text description")
     private String text;
