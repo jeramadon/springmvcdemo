@@ -36,7 +36,8 @@ public class OffersController {
     }
     
     @RequestMapping("/createoffer")
-    public String createOffer() {
+    public String createOffer(Model model) {
+        model.addAttribute("offer", new Offer());
         return "createoffer";
     }
     
@@ -53,6 +54,7 @@ public class OffersController {
             for (ObjectError error: errors) {
                 Utilities.writeToConsole(error.getDefaultMessage());
             }
+            return "createoffer";
         }
         Utilities.writeToConsole(offer.toString());
         return "offercreated";
