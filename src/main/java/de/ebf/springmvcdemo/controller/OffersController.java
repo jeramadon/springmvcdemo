@@ -52,7 +52,8 @@ public class OffersController {
         if (bindingResult.hasErrors()) {
             return "createoffer";
         }
-        Utilities.writeToConsole(offer.toString());
+        offersService.createOffer(offer);
+        Utilities.writeToConsole("Created offer: " + offer.toString());
         return "offercreated";
     }
     

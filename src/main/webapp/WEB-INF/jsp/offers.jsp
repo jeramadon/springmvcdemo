@@ -15,9 +15,11 @@
     <body>
         <h1>Query Results Dao</h1>
         <p />
-        <c:forEach var="offer" items="${offers}">
-            ${offer}<br/>
-        </c:forEach>
-            
+        <table class="offers">
+            <tr><td>Name</td><td>Email</td><td>Text</td></tr>
+            <c:forEach var="offer" items="${offers}">
+                <tr><td><c:out value="${offer.name}" /></td><td><c:out value="${offer.email}" /></td><td><c:out value="${offer.text}" /></td></tr>
+            </c:forEach>
+        </table>            
     </body>
 </html>

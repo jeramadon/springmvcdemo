@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Success!</h1>
+        <a href="${pageContext.request.contextPath}">Back</a>
     </body>
 </html>
