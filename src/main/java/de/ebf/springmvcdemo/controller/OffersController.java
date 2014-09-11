@@ -50,10 +50,6 @@ public class OffersController {
     @RequestMapping(value = "/docreate", method=RequestMethod.POST)
     public String doCreate(Model model, @Valid Offer offer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            for (ObjectError error: errors) {
-                Utilities.writeToConsole(error.getDefaultMessage());
-            }
             return "createoffer";
         }
         Utilities.writeToConsole(offer.toString());

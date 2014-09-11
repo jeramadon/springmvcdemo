@@ -20,6 +20,11 @@ and open the template in the editor.
 .control {
     margin-left: 10px;
 }
+.formerror {
+    font-size: small;
+    color: red;
+    margin-left: 10px;
+}
 input[type="text"] {
     width: 250px;
 }
