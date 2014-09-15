@@ -5,6 +5,7 @@ dist/
 nbdist/
 target/springmvcdemo-1.0-SNAPSHOT/
 target/maven-archiver/pom.properties
+target/classes/**
 nbactions.xml
 nb-configuration.xml
 
