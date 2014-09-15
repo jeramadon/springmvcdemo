@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package de.ebf.springmvcdemo.controller;
 
 import org.springframework.stereotype.Controller;
@@ -14,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author jerryamadon
  */
 @Controller
-public class HomeController {
+public class LoginController {
     
-    @RequestMapping("/")
-    public String showHome() {
-        return "home";
+    @RequestMapping("/login")
+    public String showLogin() {
+        return "login";
     }    
 }
