@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>New Offer</h1>
-            <sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
+            <sf:form method="post" action="${pageContext.request.contextPath}/docreateoffer" commandName="offer">
                 <table class="formtable">
                     <tr><td class="label">Name:</td><td><sf:input class="control" path="name" name="name" type="text" /><br /><sf:errors path="name" cssClass="formerror" /></td></tr>                        
                     <tr><td class="label">Email:</td><td><sf:input class="control" path="email" name="email" type="text" /><br /><sf:errors path="email" cssClass="formerror" /></td></tr>    

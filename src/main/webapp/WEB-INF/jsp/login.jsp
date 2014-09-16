@@ -25,5 +25,6 @@
                 <tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
             </table>
         </form>
+        <p><a href="<c:url value="/createuser" />">Create User</a></p>
     </body>
 </html>
