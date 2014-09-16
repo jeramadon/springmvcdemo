@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -14,6 +15,9 @@
     </head>
     <body onload='document.f.j_username.focus();'>
         <h3>Login with Username and Password</h3>
+        <c:if test="${param.error != null}">
+            <p class="loginerror">Login failed</p>            
+        </c:if>
         <form name='f' action='${pageContext.request.contextPath}/j_spring_security_check' method='POST'>
             <table class="formtable">
                 <tr><td>User:</td><td><input type='text' name='j_username' value=''></td></tr>

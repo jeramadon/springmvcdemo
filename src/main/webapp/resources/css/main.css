@@ -36,3 +36,6 @@ table.offers {
     padding: 10px;
     border: 2px solid gray;
 }
+p.loginerror {
+    color: red;
+}
