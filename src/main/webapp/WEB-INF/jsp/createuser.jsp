@@ -17,8 +17,9 @@
         <h1>New User</h1>
             <sf:form method="post" action="${pageContext.request.contextPath}/docreateuser" commandName="user">
                 <table class="formtable">
-                    <tr><td class="label">Username:</td><td><sf:input class="control" path="username" name="username" type="text" /><br /><sf:errors path="username" cssClass="formerror" /></td></tr>                        
-                    <tr><td class="label">Password:</td><td><sf:input class="control" path="password" name="password" type="text" /><br /><sf:errors path="password" cssClass="formerror" /></td></tr>    
+                    <tr><td class="label">Username:</td><td><sf:input class="control" path="username" name="username" type="text" /><div class="formerror"><sf:errors path="username" /></div></td></tr>                        
+                    <tr><td class="label">Email:</td><td><sf:input class="control" path="email" name="email" type="text" /><div class="formerror"><sf:errors path="email" /></div></td></tr>    
+                    <tr><td class="label">Password:</td><td><sf:input class="control" path="password" name="password" type="text" /><div class="formerror"><sf:errors path="password" /></div></td></tr>    
                     <tr><td class="label">Confirm Password:</td><td><input class="control" name="confirmpassword" type="text" /><br /></td></tr>    
                     <tr><td class="label"></td><td><input class="control" value="Create User" type="submit" /></td></tr>
                 </table>

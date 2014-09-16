@@ -5,6 +5,8 @@
  */
 package de.ebf.springmvcdemo.dao;
 
+import de.ebf.springmvcdemo.validation.ValidEmail;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -13,8 +15,12 @@ import javax.validation.constraints.Size;
  */
 public class User {
 
+    @Size(min=2, max=100)
+    @Pattern(regexp="^\\w{2,}$", message="Enter a valid username of 2 characters")
     private String username;
+    @Size(min=1, max=100)
     private String password;
+    @ValidEmail(min=5, message="Enter a valid Email address")
     private String email;
     private boolean enabled;
     private String authority;
