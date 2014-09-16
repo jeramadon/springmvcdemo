@@ -34,10 +34,17 @@ public class OffersDao {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    @Transactional
+    public boolean create(Offer offer) {
+        BeanPropertySqlParameterSource beanSqlParameter = new BeanPropertySqlParameterSource(offer);
+        return jdbcTemplate.update("insert into offers (name, email, text) values (:name, :email, :text)", beanSqlParameter) == 1;
+    }
+    
     public Offer getOffer(int id) {
         MapSqlParameterSource sqlParameter = new MapSqlParameterSource("searchId", id);
         return jdbcTemplate.queryForObject("select * from offers where id = :searchId", sqlParameter, new RowMapper<Offer>() {
 
+            @Override
             public Offer mapRow(ResultSet rs, int i) throws SQLException {
                 Offer offer = new Offer();
                 offer.setId(rs.getInt("id"));
@@ -52,6 +59,7 @@ public class OffersDao {
     public List<Offer> getOffers() {
         return jdbcTemplate.query("select * from offers", new RowMapper<Offer>() {
 
+            @Override
             public Offer mapRow(ResultSet rs, int i) throws SQLException {
                 Offer offer = new Offer();
                 offer.setId(rs.getInt("id"));
@@ -61,11 +69,6 @@ public class OffersDao {
                 return offer;
             }
         });
-    }
-    
-    public boolean create(Offer offer) {
-        BeanPropertySqlParameterSource beanSqlParameter = new BeanPropertySqlParameterSource(offer);
-        return jdbcTemplate.update("insert into offers (name, email, text) values (:name, :email, :text)", beanSqlParameter) == 1;
     }
     
     @Transactional

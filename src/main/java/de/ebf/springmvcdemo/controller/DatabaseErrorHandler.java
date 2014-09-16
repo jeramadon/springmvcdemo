@@ -6,6 +6,7 @@
 
 package de.ebf.springmvcdemo.controller;
 
+import de.ebf.springmvcdemo.utilities.Utilities;
 import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +20,7 @@ public class DatabaseErrorHandler {
     
     @ExceptionHandler(DataAccessException.class)
     public String handleDatabaseException(DataAccessException exception) {
+        Utilities.writeToConsole(exception.getMessage());
         return "dberror";
     }    
 }

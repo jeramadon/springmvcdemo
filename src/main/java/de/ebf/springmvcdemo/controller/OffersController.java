@@ -51,7 +51,7 @@ public class OffersController {
     }
     
     @RequestMapping(value = "/docreateoffer", method=RequestMethod.POST)
-    public String doCreateOffer(Model model, @Valid Offer offer, BindingResult bindingResult) {
+    public String doCreateOffer(@Valid Offer offer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "createoffer";
         }
