@@ -16,12 +16,12 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Size(min=2, max=100)
-    @Pattern(regexp="^\\w{2,}$", message="Enter a valid username of 2 characters")
+    @Pattern(regexp="^\\w{2,}$")
     private String username;
-    @Size(min=1, max=100)
-    private String password;
-    @ValidEmail(min=5, message="Enter a valid Email address")
+    @ValidEmail(min=5)
     private String email;
+    @Size(min=2, max=100)
+    private String password;
     private boolean enabled;
     private String authority;
 

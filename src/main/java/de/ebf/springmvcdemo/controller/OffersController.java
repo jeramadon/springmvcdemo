@@ -33,7 +33,6 @@ public class OffersController {
     
     @RequestMapping("/offers")
     public String showOffers(Model model) {
-//        offerService.throwTestException();
         model.addAttribute("offers", offersService.getCurrentOffers());
         return "offers";
     }

@@ -14,8 +14,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +51,11 @@ public class UsersDao {
             }
         });
     }    
+
+    public boolean exists(String username) {
+        return jdbcTemplate.queryForObject("select count(*) from users where username=:username",
+                new MapSqlParameterSource("username", username), Integer.class) > 0;        
+    }
   /*    
     public User getUser(String username) {
         MapSqlParameterSource sqlParameter = new MapSqlParameterSource("searchId", username);

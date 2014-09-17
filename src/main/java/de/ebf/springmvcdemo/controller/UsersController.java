@@ -10,6 +10,8 @@ import de.ebf.springmvcdemo.service.UsersService;
 import de.ebf.springmvcdemo.utilities.Utilities;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,8 +40,13 @@ public class UsersController {
         }
         user.setEnabled(true);
         user.setAuthority("user");
-        usersService.createUser(user);
-        Utilities.writeToConsole("Created user: " + user.toString());
+        if (!usersService.exists(user.getUsername())) {
+            usersService.createUser(user);
+            Utilities.writeToConsole("Created user: " + user.toString());
+        } else {
+            bindingResult.rejectValue("username", "DuplicateKey.user.username");
+            return "createuser";
+        }
         return "usercreated";
     }
     

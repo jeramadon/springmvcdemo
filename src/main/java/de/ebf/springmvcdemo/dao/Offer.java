@@ -18,13 +18,12 @@ import javax.validation.constraints.Size;
 public class Offer {
 
     private int id;
-    @Size(min=1, max=100, message="Enter a valid name")
+    @Size(min=1, max=100)
     private String name;
     @NotNull
-//    @Pattern(regexp=".*@.*\\..*", message="Enter a valid email address")
-    @ValidEmail(min=5, message="Enter a valid Email address")
+    @ValidEmail(min=5)
     private String email;
-    @Size(min=1, max=100, message="Enter a valid text description")
+    @Size(min=1, max=100)
     private String text;
 
     public Offer() {        
