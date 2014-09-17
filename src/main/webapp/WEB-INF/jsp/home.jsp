@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,5 +11,6 @@
     <body>
         <p><a href="${pageContext.request.contextPath}/offers" >Current Offers</a></p>
         <p><a href="${pageContext.request.contextPath}/createoffer" >Create Offer</a></p>
+        <p><a href="<c:url value="/j_spring_security_logout" />">Logout</a></p>
     </body>
 </html>

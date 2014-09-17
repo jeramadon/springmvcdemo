@@ -4,7 +4,7 @@
     Author     : jerryamadon
 --%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
             });
             function onSubmit() {
                 if (!passwordsMatch($("#password").val().length)) {
-                    $("#confirmpasswordmessage").text("Mismatched passwords");                    
+                    $("#confirmpasswordmessage").text("<fmt:message key='UnmatchedPassword.user.password' />");                    
                     return false;
                 } else {
                     $("#confirmpasswordmessage").text("");                    
@@ -28,7 +28,7 @@
             }
             function monitorPasswords() {
                 if (!passwordsMatch($("#confirmpassword").val().length)) {
-                    $("#confirmpasswordmessage").text("Mismatched passwords");                    
+                    $("#confirmpasswordmessage").text("<fmt:message key='UnmatchedPassword.user.password' />");                    
                 } else {
                     $("#confirmpasswordmessage").text("");                    
                 }
@@ -52,8 +52,8 @@
                 <table class="formtable">
                     <tr><td class="label">Username:</td><td><sf:input class="control" path="username" name="username" type="text" /><div class="formerror"><sf:errors path="username" /></div></td></tr>                        
                     <tr><td class="label">Email:</td><td><sf:input class="control" path="email" name="email" type="text" /><div class="formerror"><sf:errors path="email" /></div></td></tr>    
-                    <tr><td class="label">Password:</td><td><sf:input id="password" class="control" path="password" name="password" type="text" /><div class="formerror"><sf:errors path="password" /></div></td></tr>    
-                    <tr><td class="label">Confirm Password:</td><td><input id="confirmpassword" class="control" name="confirmpassword" type="text" /><div id="confirmpasswordmessage" class="formerror"></div></td></tr>    
+                    <tr><td class="label">Password:</td><td><sf:input id="password" class="control" path="password" name="password" type="password" /><div class="formerror"><sf:errors path="password" /></div></td></tr>    
+                    <tr><td class="label">Confirm Password:</td><td><input id="confirmpassword" class="control" name="confirmpassword" type="password" /><div id="confirmpasswordmessage" class="formerror"></div></td></tr>    
                     <tr><td class="label"></td><td><input class="control" value="Create User" type="submit" /></td></tr>
                 </table>
             </sf:form>
