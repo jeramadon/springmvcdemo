@@ -12,7 +12,7 @@
     <body>
         <p><a href="${pageContext.request.contextPath}/offers" >Current Offers</a></p>
         <p><a href="${pageContext.request.contextPath}/createoffer" >Create Offer</a></p>
-        <sec:authorize access="hasRole('admin')">
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
             <p><a href="<c:url value="/admin" />">Admin Console</a></p>
         </sec:authorize>
         <sec:authorize access="!isAuthenticated()">

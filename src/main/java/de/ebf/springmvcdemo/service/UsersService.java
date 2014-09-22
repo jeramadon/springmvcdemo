@@ -9,6 +9,7 @@ import de.ebf.springmvcdemo.dao.User;
 import de.ebf.springmvcdemo.dao.UsersDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +30,7 @@ public class UsersService {
         return usersDao.getCurrentUsers();
     }
     
+    @Secured("ROLE_ADMIN")
     public List<User> getAllUsers() {
         return usersDao.getAllUsers();
     }
