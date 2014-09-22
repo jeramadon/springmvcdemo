@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -38,7 +39,7 @@ public class UsersDao {
         return jdbcTemplate.update("insert into authorities (username, authority) values (:username, :authority)", beanSqlParameter) == 1;
     }
     
-    public List<User> getUsers() {
+    public List<User> getCurrentUsers() {
         return jdbcTemplate.query("select * from users", new RowMapper<User>() {
 
             @Override
@@ -50,6 +51,10 @@ public class UsersDao {
                 return user;
             }
         });
+    }    
+
+    public List<User> getAllUsers() {
+        return jdbcTemplate.query("select * from users, authorities where users.username = authorities.username", BeanPropertyRowMapper.newInstance(User.class));
     }    
 
     public boolean exists(String username) {

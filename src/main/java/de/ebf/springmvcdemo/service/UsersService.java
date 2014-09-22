@@ -26,7 +26,11 @@ public class UsersService {
     }
     
     public List<User> getCurrentUsers() {
-        return usersDao.getUsers();
+        return usersDao.getCurrentUsers();
+    }
+    
+    public List<User> getAllUsers() {
+        return usersDao.getAllUsers();
     }
     
     public void createUser(User user) {
