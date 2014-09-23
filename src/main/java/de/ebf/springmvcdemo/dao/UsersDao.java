@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,17 +27,28 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsersDao {
     
     private NamedParameterJdbcTemplate jdbcTemplate;
-    
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+    
     @Transactional
     public boolean create(User user) {
-        BeanPropertySqlParameterSource beanSqlParameter = new BeanPropertySqlParameterSource(user);
-        jdbcTemplate.update("insert into users (username, password, email, enabled) values (:username, :password, :email, :enabled)", beanSqlParameter);
-        return jdbcTemplate.update("insert into authorities (username, authority) values (:username, :authority)", beanSqlParameter) == 1;
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("username", user.getUsername());
+        parameterSource.addValue("password", passwordEncoder.encode(user.getPassword()));
+        parameterSource.addValue("email", user.getEmail());
+        parameterSource.addValue("enabled", user.isEnabled());
+        parameterSource.addValue("authority", user.getAuthority());
+        jdbcTemplate.update("insert into users (username, password, email, enabled) values (:username, :password, :email, :enabled)", parameterSource);
+        return jdbcTemplate.update("insert into authorities (username, authority) values (:username, :authority)", parameterSource) == 1;
     }
     
     public List<User> getCurrentUsers() {

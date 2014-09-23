@@ -39,7 +39,7 @@ public class UsersController {
             return "createuser";
         }
         user.setEnabled(true);
-        user.setAuthority("user");
+        user.setAuthority("ROLE_USER");
         if (!usersService.exists(user.getUsername())) {
             usersService.createUser(user);
             Utilities.writeToConsole("Created user: " + user.toString());
