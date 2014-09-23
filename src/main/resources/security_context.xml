@@ -25,6 +25,7 @@
         <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/docreateoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
+        <security:intercept-url pattern="/denied" access="permitAll" />
         <security:intercept-url pattern="/createuser" access="permitAll" />
         <security:intercept-url pattern="/docreateuser" access="permitAll" />
         <security:intercept-url pattern="/usercreated" access="permitAll" />
@@ -35,6 +36,7 @@
         <security:intercept-url pattern="/**" access="denyAll" />
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/>
         <security:logout logout-success-url="/" />
+        <security:access-denied-handler error-page="/denied" />
     </security:http>
     <security:global-method-security secured-annotations="enabled" />
     

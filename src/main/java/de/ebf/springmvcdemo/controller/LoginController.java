@@ -19,4 +19,9 @@ public class LoginController {
     public String showLogin() {
         return "login";
     }    
+    
+    @RequestMapping("/denied")
+    public String showDenied() {
+        return "denied";
+    }    
 }
